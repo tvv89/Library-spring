@@ -1,7 +1,6 @@
 package com.epam.spring.library.dto;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
