@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -13,4 +15,8 @@ public class RentedBook {
     private long id;
     private Book book;
     private User user;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private StatusPayRentedBook status;
+
 }
