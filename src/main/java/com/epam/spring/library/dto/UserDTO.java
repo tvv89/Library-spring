@@ -1,40 +1,37 @@
 package com.epam.spring.library.dto;
 
+import com.epam.spring.library.validator.DateConstraint;
 import lombok.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class UserDTO {
-    @Valid
+    @Id
     @Positive
     private long id;
-    @Valid
     @NotBlank
     @NotEmpty
+    @NotNull
     private String number;
-    @Valid
     @NotBlank
     @NotEmpty
     private String password;
-    @Valid
     @Email
     private String email;
-    @Valid
     @NotBlank
     @NotEmpty
     private String firstName;
-    @Valid
     @NotBlank
     @NotEmpty
     private String lastName;
+    @DateConstraint
     private String dateOfBirth;
     private String phone;
     private String status;

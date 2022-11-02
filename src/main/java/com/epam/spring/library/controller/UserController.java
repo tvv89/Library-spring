@@ -1,6 +1,7 @@
 package com.epam.spring.library.controller;
 
 import com.epam.spring.library.dto.UserDTO;
+import com.epam.spring.library.exception.EntityNotFoundException;
 import com.epam.spring.library.mapper.UserMapper;
 import com.epam.spring.library.model.User;
 import com.epam.spring.library.service.UserService;
@@ -28,11 +29,13 @@ public class UserController {
     @GetMapping("/{id}")
     public UserDTO getUserById(@PathVariable("id") long id) {
         log.info("Show user by id " + id);
-        return UserMapper.INSTANCE.mapUserDTO(userService.getUserById(id));
+        User user = userService.getUserById(id);
+        if (user==null) throw new EntityNotFoundException("user not found");
+        return UserMapper.INSTANCE.mapUserDTO(user);
     }
 
     @PostMapping()
-    public UserDTO createUser(@RequestBody UserDTO userDTO) {
+    public UserDTO createUser(@RequestBody @Valid UserDTO userDTO){
         log.info("Creat users by request " + userDTO);
         User user = UserMapper.INSTANCE.mapUser(userDTO);
         return UserMapper.INSTANCE.mapUserDTO(userService.createUser(user));
@@ -42,13 +45,14 @@ public class UserController {
     public UserDTO deleteUser(@PathVariable("id") long id) {
         log.info("Delete user by id " + id);
         User user = userService.getUserById(id);
+        if (user==null) throw new EntityNotFoundException("user not found");
         userService.deleteUser(user);
         log.info("This user will be deleted: " + user);
         return UserMapper.INSTANCE.mapUserDTO(user);
     }
 
     @PutMapping()
-    public UserDTO updateUser(@RequestBody @Valid UserDTO userDTO) {
+    public UserDTO updateUser(@Valid @RequestBody UserDTO userDTO) {
         log.info("Update user: " + userDTO);
         User user = userService.updateUser(UserMapper.INSTANCE.mapUser(userDTO));
         log.debug("This user was updated: " + user);
