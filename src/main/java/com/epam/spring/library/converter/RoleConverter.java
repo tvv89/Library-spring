@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class RoleConverter implements AttributeConverter<Role, Long> {
     @Override
     public Long convertToDatabaseColumn(Role attribute) {
-        if (attribute== null) {
+        if (attribute == null) {
             return null;
         }
         return attribute.getId();
