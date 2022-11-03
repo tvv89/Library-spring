@@ -5,6 +5,8 @@ import com.epam.spring.library.exception.EntityNotFoundException;
 import com.epam.spring.library.mapper.UserMapper;
 import com.epam.spring.library.model.User;
 import com.epam.spring.library.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +18,21 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@Api(value = "UserController", tags = "REST APIs for user entity")
 public class UserController {
 
     private final UserService userService;
 
+
     @GetMapping()
+    @ApiOperation(value = "Get list of users in the system", response = List.class, tags = "getUsers")
     public List<UserDTO> getUsers() {
         log.info("Show all users");
         return UserMapper.INSTANCE.mapListOfUsersDTO(userService.getAllUsers());
     }
 
     @GetMapping("/{id}")
+    @ApiOperation(value = "Get user by id from the system", response = UserDTO.class, tags = "getUserById")
     public UserDTO getUserById(@PathVariable("id") long id) {
         log.info("Show user by id " + id);
         User user = userService.getUserById(id);
@@ -35,6 +41,7 @@ public class UserController {
     }
 
     @PostMapping()
+    @ApiOperation(value = "Create users in the system", response = UserDTO.class, tags = "getUserById")
     public UserDTO createUser(@RequestBody @Valid UserDTO userDTO){
         log.info("Creat users by request " + userDTO);
         User user = UserMapper.INSTANCE.mapUser(userDTO);
@@ -42,6 +49,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @ApiOperation(value = "Delete user by id in the system", response = UserDTO.class, tags = "deleteUser")
     public UserDTO deleteUser(@PathVariable("id") long id) {
         log.info("Delete user by id " + id);
         User user = userService.getUserById(id);
@@ -52,6 +60,7 @@ public class UserController {
     }
 
     @PutMapping()
+    @ApiOperation(value = "Update user by id in the system", response = UserDTO.class, tags = "updateUser")
     public UserDTO updateUser(@Valid @RequestBody UserDTO userDTO) {
         log.info("Update user: " + userDTO);
         User user = userService.updateUser(UserMapper.INSTANCE.mapUser(userDTO));
