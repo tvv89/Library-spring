@@ -1,13 +1,13 @@
 package com.epam.spring.library.dto;
 
 import com.epam.spring.library.validator.DateConstraint;
+import com.epam.spring.library.validator.PhoneConstraint;
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.*;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,6 +33,7 @@ public class UserDTO {
     private String lastName;
     @DateConstraint
     private String dateOfBirth;
+    @PhoneConstraint
     private String phone;
     private String status;
     private String photo;

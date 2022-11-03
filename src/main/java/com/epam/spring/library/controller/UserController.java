@@ -25,14 +25,14 @@ public class UserController {
 
 
     @GetMapping()
-    @ApiOperation(value = "Get list of users in the system", response = List.class, tags = "getUsers")
+    @ApiOperation(value = "Get list of users in the system", response = List.class)
     public List<UserDTO> getUsers() {
         log.info("Show all users");
         return UserMapper.INSTANCE.mapListOfUsersDTO(userService.getAllUsers());
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "Get user by id from the system", response = UserDTO.class, tags = "getUserById")
+    @ApiOperation(value = "Get user by id from the system", response = UserDTO.class)
     public UserDTO getUserById(@PathVariable("id") long id) {
         log.info("Show user by id " + id);
         User user = userService.getUserById(id);
@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping()
-    @ApiOperation(value = "Create users in the system", response = UserDTO.class, tags = "getUserById")
+    @ApiOperation(value = "Create users in the system", response = UserDTO.class)
     public UserDTO createUser(@RequestBody @Valid UserDTO userDTO){
         log.info("Creat users by request " + userDTO);
         User user = UserMapper.INSTANCE.mapUser(userDTO);
@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "Delete user by id in the system", response = UserDTO.class, tags = "deleteUser")
+    @ApiOperation(value = "Delete user by id in the system", response = UserDTO.class)
     public UserDTO deleteUser(@PathVariable("id") long id) {
         log.info("Delete user by id " + id);
         User user = userService.getUserById(id);
@@ -60,7 +60,7 @@ public class UserController {
     }
 
     @PutMapping()
-    @ApiOperation(value = "Update user by id in the system", response = UserDTO.class, tags = "updateUser")
+    @ApiOperation(value = "Update user by id in the system", response = UserDTO.class)
     public UserDTO updateUser(@Valid @RequestBody UserDTO userDTO) {
         log.info("Update user: " + userDTO);
         User user = userService.updateUser(UserMapper.INSTANCE.mapUser(userDTO));
