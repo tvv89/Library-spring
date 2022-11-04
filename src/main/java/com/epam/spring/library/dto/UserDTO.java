@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.*;
 
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,24 +17,24 @@ public class UserDTO {
     @Id
     @Positive
     private long id;
-    @NotBlank
-    @NotEmpty
-    @NotNull
+    @NotBlank (message = "{message.validation.user.not_blank}")
+    @NotEmpty (message = "{message.validation.user.not_empty}")
+    @NotNull (message = "{message.validation.user.not_empty}")
     private String number;
-    @NotBlank
-    @NotEmpty
+    @NotBlank (message = "{message.validation.user.not_blank}")
+    @NotEmpty (message = "{message.validation.user.not_empty}")
     private String password;
-    @Email
+    @Email (message = "{message.validation.user.email}")
     private String email;
-    @NotBlank
-    @NotEmpty
+    @NotBlank (message = "{message.validation.user.not_blank}")
+    @NotEmpty (message = "{message.validation.user.not_empty}")
     private String firstName;
-    @NotBlank
-    @NotEmpty
+    @NotBlank (message = "{message.validation.user.not_blank}")
+    @NotEmpty (message = "{message.validation.user.not_empty}")
     private String lastName;
-    @DateConstraint
+    @DateConstraint (message = "{message.validation.user.date}")
     private String dateOfBirth;
-    @PhoneConstraint
+    @PhoneConstraint (message = "{message.validation.user.phone}")
     private String phone;
     private String status;
     private String photo;
