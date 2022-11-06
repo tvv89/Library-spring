@@ -1,6 +1,7 @@
 package com.epam.spring.library.controller;
 
 import com.epam.spring.library.dto.BookDTO;
+import com.epam.spring.library.exception.EntityNotFoundException;
 import com.epam.spring.library.mapper.BookMapper;
 import com.epam.spring.library.model.Book;
 import com.epam.spring.library.service.BookService;
@@ -28,7 +29,9 @@ public class BookController {
     @GetMapping("/{id}")
     public BookDTO getBookById(@PathVariable("id") long id) {
         log.info("Show book by id " + id);
-        return BookMapper.INSTANCE.mapBookDTO(bookService.getBookById(id));
+        Book book = bookService.getBookById(id);
+        if (book==null) throw new EntityNotFoundException("book not found");
+        return BookMapper.INSTANCE.mapBookDTO(book);
     }
 
     @PostMapping()
