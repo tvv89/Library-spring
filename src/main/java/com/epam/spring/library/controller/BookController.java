@@ -50,6 +50,23 @@ public class BookController {
         return BookMapper.INSTANCE.mapBookDTO(book);
     }
 
+    @GetMapping("/find")
+    public List<BookDTO> findBooksByGenre(@RequestParam String genre) {
+        return BookMapper.INSTANCE.mapListOfBooksDTO(bookService.findBooksByGenre(genre));
+    }
+
+    @GetMapping("/find-by-author")
+    public List<BookDTO> findBooksByAuthorLastName(@RequestParam(name = "last-name") String lastName) {
+        return BookMapper.INSTANCE
+                .mapListOfBooksDTO(bookService.findBooksByAuthorLastName(lastName));
+    }
+
+    @GetMapping("/find-by-isbn")
+    public BookDTO findBooksByISBN(@RequestParam(name = "isbn") String isbn) {
+        return BookMapper.INSTANCE
+                .mapBookDTO(bookService.findBookByISBN(isbn));
+    }
+
     @PutMapping()
     public BookDTO updateBook(@RequestBody @Valid BookDTO bookDTO) {
         log.info("Update book: " + bookDTO);

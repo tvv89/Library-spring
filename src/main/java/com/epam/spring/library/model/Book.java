@@ -2,7 +2,6 @@ package com.epam.spring.library.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -14,6 +13,12 @@ import java.util.Set;
 @Component
 @Entity
 @Table(name = "books")
+@NamedQuery(name = "Book.findBooksByAuthorLastName",
+            query = "SELECT b FROM Book b join b.authors a join fetch b.authors where a.lastName = :lastName")
+@NamedNativeQuery(name = "Book.findBookByISBNCustom",
+        query = "SELECT * FROM books where isbn = :isbn",
+        resultClass = Book.class)
+
 public class Book {
     @Id
     @GeneratedValue
@@ -47,9 +52,12 @@ public class Book {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(id, book.id);
+        return id == book.id && count == book.count && Objects.equals(isbn, book.isbn)
+                && Objects.equals(name, book.name) && Objects.equals(authors, book.authors)
+                && Objects.equals(publisher, book.publisher) && Objects.equals(year, book.year)
+                && Objects.equals(genres, book.genres) && Objects.equals(image, book.image);
     }
 
     @Override
