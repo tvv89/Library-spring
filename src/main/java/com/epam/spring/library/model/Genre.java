@@ -11,13 +11,13 @@ import java.util.Objects;
 @Setter
 @Component
 @Entity
-//@Table(name = "genres")
+@Table(name = "genres")
 public class Genre {
     @Id
     @GeneratedValue
-    //@Column(name = "id")
+    @Column(name = "id")
     private long id;
-    //@Column(name = "name")
+    @Column(name = "name")
     private String name;
 
     @Override
