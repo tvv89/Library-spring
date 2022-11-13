@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.util.Set;
 
@@ -18,12 +20,24 @@ public class BookDTO {
     @Valid
     @Positive
     private long id;
+    @NotNull
+    @NotBlank
     private String isbn;
+    @NotNull
+    @NotBlank
     private String name;
+    @NotNull
+    @NotBlank
     private Set<AuthorDTO> authors;
+    @NotNull
+    @NotBlank
     private Publisher publisher;
+    @NotNull
+    @NotBlank
     private String year;
     private Set<GenreDTO> genres;
     private String image;
+    @NotNull
+    @NotBlank
     private int count;
 }

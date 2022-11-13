@@ -30,7 +30,7 @@ public class BookController {
     public BookDTO getBookById(@PathVariable("id") long id) {
         log.info("Show book by id " + id);
         Book book = bookService.getBookById(id);
-        if (book==null) throw new EntityNotFoundException("book not found");
+        if (book == null) throw new EntityNotFoundException("book not found");
         return BookMapper.INSTANCE.mapBookDTO(book);
     }
 
@@ -45,24 +45,31 @@ public class BookController {
     public BookDTO deleteBook(@PathVariable("id") long id) {
         log.info("Delete book by id " + id);
         Book book = bookService.getBookById(id);
+        if (book == null) {
+            log.debug("Book by id " + id + " not found");
+            throw new EntityNotFoundException("Book not found");
+        }
         bookService.deleteBook(book);
-        log.info("This book will be deleted: " + book);
+        log.info("This book was deleted: " + book);
         return BookMapper.INSTANCE.mapBookDTO(book);
     }
 
-    @GetMapping("/find")
+    @GetMapping("/find-by-genre")
     public List<BookDTO> findBooksByGenre(@RequestParam String genre) {
+        log.info("Find books by genre " + genre);
         return BookMapper.INSTANCE.mapListOfBooksDTO(bookService.findBooksByGenre(genre));
     }
 
     @GetMapping("/find-by-author")
     public List<BookDTO> findBooksByAuthorLastName(@RequestParam(name = "last-name") String lastName) {
+        log.info("Find books by author " + lastName);
         return BookMapper.INSTANCE
                 .mapListOfBooksDTO(bookService.findBooksByAuthorLastName(lastName));
     }
 
     @GetMapping("/find-by-isbn")
     public BookDTO findBooksByISBN(@RequestParam(name = "isbn") String isbn) {
+        log.info("Find books by ISBN " + isbn);
         return BookMapper.INSTANCE
                 .mapBookDTO(bookService.findBookByISBN(isbn));
     }
