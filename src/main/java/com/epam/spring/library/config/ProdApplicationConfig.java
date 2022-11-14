@@ -3,6 +3,7 @@ package com.epam.spring.library.config;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -11,7 +12,8 @@ import org.springframework.web.client.RestTemplate;
 import javax.sql.DataSource;
 
 @Configuration
-public class CustomApplicationConfig {
+@Profile("production")
+public class ProdApplicationConfig {
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource
@@ -26,7 +28,6 @@ public class CustomApplicationConfig {
         return new RestTemplate();
     }
 
-
     @Bean
     public DataSource mysqlDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -36,6 +37,7 @@ public class CustomApplicationConfig {
         dataSource.setPassword("root");
         return dataSource;
     }
+
     @Bean
     public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(mysqlDataSource());
