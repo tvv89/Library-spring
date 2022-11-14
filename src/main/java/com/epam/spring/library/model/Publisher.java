@@ -1,8 +1,6 @@
 package com.epam.spring.library.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -10,6 +8,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @RequiredArgsConstructor
 @Component
 @Entity
