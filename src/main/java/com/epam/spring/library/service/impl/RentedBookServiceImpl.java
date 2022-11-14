@@ -34,7 +34,7 @@ public class RentedBookServiceImpl implements RentedBookService {
 
     @Override
     public List<RentedBook> getAllRentedBooks() {
-        return rentedBookRepository.getRentedBooks();
+        return (List<RentedBook>) rentedBookRepository.findAll();
     }
 
     @Override

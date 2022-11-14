@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository
 public interface RentedBookRepository extends PagingAndSortingRepository<RentedBook, Long> {
-    List<RentedBook> getRentedBooks();
     List<RentedBook> findRentedBooksByUser (User user);
     List<RentedBook> findRentedBooksByBook (Book book);
     List<RentedBook> findRentedBooksByStatus(StatusPayRentedBook status);
