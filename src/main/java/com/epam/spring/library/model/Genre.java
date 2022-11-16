@@ -18,7 +18,7 @@ import java.util.Objects;
 @Table(name = "genres")
 public class Genre {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
     @Column(name = "name")
