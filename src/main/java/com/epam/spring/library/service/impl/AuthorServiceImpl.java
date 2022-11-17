@@ -1,5 +1,6 @@
 package com.epam.spring.library.service.impl;
 
+import com.epam.spring.library.exception.EntityNotFoundException;
 import com.epam.spring.library.model.Author;
 import com.epam.spring.library.repository.AuthorRepository;
 import com.epam.spring.library.service.AuthorService;
@@ -30,7 +31,9 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author getAuthorById(long id) {
-        return authorRepository.findById(id).orElse(null);
+        Author author = authorRepository.findById(id).orElse(null);
+        if (author==null) throw new EntityNotFoundException("author not found") ;
+        return author;
     }
 
     @Override
