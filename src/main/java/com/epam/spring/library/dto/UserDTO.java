@@ -1,42 +1,36 @@
 package com.epam.spring.library.dto;
 
+import com.epam.spring.library.validator.DateConstraint;
+import com.epam.spring.library.validator.PhoneConstraint;
 import lombok.*;
-import org.springframework.stereotype.Component;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
-    @Valid
     @Positive
     private long id;
-    @Valid
-    @NotBlank
-    @NotEmpty
+    @NotBlank (message = "{message.validation.user.not_blank}")
+    @NotEmpty (message = "{message.validation.user.not_empty}")
+    @NotNull (message = "{message.validation.user.not_empty}")
     private String number;
-    @Valid
-    @NotBlank
-    @NotEmpty
+    @NotBlank (message = "{message.validation.user.not_blank}")
+    @NotEmpty (message = "{message.validation.user.not_empty}")
     private String password;
-    @Valid
-    @Email
+    @Email (message = "{message.validation.user.email}")
     private String email;
-    @Valid
-    @NotBlank
-    @NotEmpty
+    @NotBlank (message = "{message.validation.user.not_blank}")
+    @NotEmpty (message = "{message.validation.user.not_empty}")
     private String firstName;
-    @Valid
-    @NotBlank
-    @NotEmpty
+    @NotBlank (message = "{message.validation.user.not_blank}")
+    @NotEmpty (message = "{message.validation.user.not_empty}")
     private String lastName;
+    @DateConstraint (message = "{message.validation.user.date}")
     private String dateOfBirth;
+    @PhoneConstraint (message = "{message.validation.user.phone}")
     private String phone;
     private String status;
     private String photo;
