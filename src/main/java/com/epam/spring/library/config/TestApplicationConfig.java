@@ -32,7 +32,7 @@ public class TestApplicationConfig {
     public DataSource testDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:mem:library;DB_CLOSE_DELAY=-1");
+        dataSource.setUrl("jdbc:h2:mem:library;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL");
         dataSource.setUsername("sa");
         dataSource.setPassword("sa");
         return dataSource;

@@ -59,7 +59,7 @@ class BookControllerTest {
     void createBook() throws Exception {
         String body = """
                 {
-                    "id": 48,
+                    "id": 0,
                     "isbn": "9786176640820",
                     "name": "Гобіт, або Туди і звідти",
                     "authors": [
