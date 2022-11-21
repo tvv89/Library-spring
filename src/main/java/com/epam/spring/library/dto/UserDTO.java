@@ -4,17 +4,13 @@ import com.epam.spring.library.validator.DateConstraint;
 import com.epam.spring.library.validator.PhoneConstraint;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.validation.constraints.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class UserDTO {
-    @Id
     @Positive
     private long id;
     @NotBlank (message = "{message.validation.user.not_blank}")

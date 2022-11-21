@@ -34,7 +34,7 @@ public class BookDTO {
     private Publisher publisher;
     @NotNull
     @NotBlank
-    private String year;
+    private String years;
     private Set<GenreDTO> genres;
     private String image;
     @NotNull

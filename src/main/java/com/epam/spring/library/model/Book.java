@@ -40,8 +40,8 @@ public class Book {
     private Set<Author> authors;
     @OneToOne
     private Publisher publisher;
-    @Column(name = "year")
-    private String year;
+    @Column(name = "years")
+    private String years;
     @ManyToMany
     @JoinTable(
             name = "book_genre",
@@ -60,7 +60,7 @@ public class Book {
         Book book = (Book) o;
         return id == book.id && count == book.count && Objects.equals(isbn, book.isbn)
                 && Objects.equals(name, book.name) && Objects.equals(authors, book.authors)
-                && Objects.equals(publisher, book.publisher) && Objects.equals(year, book.year)
+                && Objects.equals(publisher, book.publisher) && Objects.equals(years, book.years)
                 && Objects.equals(genres, book.genres) && Objects.equals(image, book.image);
     }
 

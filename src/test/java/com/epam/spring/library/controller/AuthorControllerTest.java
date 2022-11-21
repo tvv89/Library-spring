@@ -13,7 +13,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -87,7 +86,7 @@ class AuthorControllerTest {
     void updateAuthor() throws Exception {
         Author author = TestUtils.createAuthor();
         String jsonBody = """
-                {
+                    {
                     "id": 9,
                     "firstName": "Джордж",
                     "lastName": "Орвелл"
