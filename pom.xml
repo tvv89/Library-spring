@@ -122,6 +122,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>library-spring</finalName>
 	</build>
 
 </project>

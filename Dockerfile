@@ -1,4 +1,7 @@
 FROM openjdk:17
 MAINTAINER volodymyr.tymchuk
-COPY target/Library-0.0.1-SNAPSHOT.jar library-spring.jar
-ENTRYPOINT ["java","-jar","/library-spring.jar"]
+
+COPY ["target/library-spring.jar", "library-spring.jar"]
+EXPOSE 8081
+
+ENTRYPOINT ["java", "-jar", "library-spring.jar"]
