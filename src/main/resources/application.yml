@@ -1,0 +1,38 @@
+server:
+  port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,beans,env
+  info:
+    java:
+      enabled: true
+    os:
+      enabled: true
+    build:
+      enabled: true
+    git:
+      enabled: true
+    env:
+      enabled: true
+logging:
+  level:
+    com.epam: INFO
+    com.epam.spring: DEBUG
+spring:
+  web:
+    locale: en
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    contexts: dev
+  profiles:
+    active: production

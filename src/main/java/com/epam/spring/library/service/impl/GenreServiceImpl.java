@@ -2,7 +2,7 @@ package com.epam.spring.library.service.impl;
 
 import com.epam.spring.library.model.Genre;
 import com.epam.spring.library.service.GenreService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -13,14 +13,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class GenreServiceImpl implements GenreService {
 
     private final JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    public GenreServiceImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
     @Override
     public List<Genre> getAllGenres() {
