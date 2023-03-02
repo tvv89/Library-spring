@@ -1,5 +1,9 @@
 databaseChangeLog:
-    - includeAll:
-          path: db/changelog/1.0/
-    - includeAll:
-          path: db/changelog/data/
+  - includeAll:
+      path: db/changelog/1.0
+  - include:
+      file: db/changelog/load-data.yaml
+  - include:
+      file: db/changelog/create-indexes.yaml
+  - include:
+      file: db/changelog/create-keys.yaml

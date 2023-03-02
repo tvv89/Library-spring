@@ -1,6 +1,12 @@
 spring:
+  liquibase:
+    enabled: true
+    change-log: db/changelog/db.changelog-master.yaml
   datasource:
-    url: jdbc:h2:mem:library;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+    url: jdbc:h2:mem:library;NON_KEYWORDS=USER;MODE=MYSQL
     username: sa
     password: sa
     driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true

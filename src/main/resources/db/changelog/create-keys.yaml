@@ -1,0 +1,123 @@
+databaseChangeLog:
+
+
+  - changeSet:
+      id: 1677252884290-29
+      author: volodymyr.tymchuk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: book_id
+            baseTableName: book_genre
+            constraintName: book_genre_fk0
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: books
+            validate: true
+  - changeSet:
+      id: 1677252884290-30
+      author: volodymyr.tymchuk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: genre_id
+            baseTableName: book_genre
+            constraintName: book_genre_fk1
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: genres
+            validate: true
+  - changeSet:
+      id: 1677252884290-31
+      author: volodymyr.tymchuk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: book_id
+            baseTableName: book_user
+            constraintName: book_user_fk0
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: books
+            validate: true
+  - changeSet:
+      id: 1677252884290-32
+      author: volodymyr.tymchuk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: book_user
+            constraintName: book_user_fk1
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1677252884290-33
+      author: volodymyr.tymchuk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: book_id
+            baseTableName: books_authors
+            constraintName: books_authors_fk0
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: books
+            validate: true
+  - changeSet:
+      id: 1677252884290-34
+      author: volodymyr.tymchuk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: author_id
+            baseTableName: books_authors
+            constraintName: books_authors_fk1
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: authors
+            validate: true
+  - changeSet:
+      id: 1677252884290-35
+      author: volodymyr.tymchuk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: book_id
+            baseTableName: current_books
+            constraintName: current_books_fk0
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: books
+            validate: true
+  - changeSet:
+      id: 1677252884290-36
+      author: volodymyr.tymchuk
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: users
+            constraintName: users_fk0
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: roles
+            validate: true

@@ -1,0 +1,81 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1677252884290-21
+      author: volodymyr.tymchuk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: book_id
+            indexName: book_genre_fk0
+            tableName: book_genre
+  - changeSet:
+      id: 1677252884290-22
+      author: volodymyr.tymchuk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: genre_id
+            indexName: book_genre_fk1
+            tableName: book_genre
+  - changeSet:
+      id: 1677252884290-23
+      author: volodymyr.tymchuk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: book_id
+            indexName: book_user_fk0
+            tableName: book_user
+  - changeSet:
+      id: 1677252884290-24
+      author: volodymyr.tymchuk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: user_id
+            indexName: book_user_fk1
+            tableName: book_user
+  - changeSet:
+      id: 1677252884290-25
+      author: volodymyr.tymchuk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: book_id
+            indexName: books_authors_fk0
+            tableName: books_authors
+  - changeSet:
+      id: 1677252884290-26
+      author: volodymyr.tymchuk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: author_id
+            indexName: books_authors_fk1
+            tableName: books_authors
+  - changeSet:
+      id: 1677252884290-27
+      author: volodymyr.tymchuk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: book_id
+            indexName: current_books_fk0
+            tableName: current_books
+  - changeSet:
+      id: 1677252884290-28
+      author: volodymyr.tymchuk
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: role_id
+            indexName: users_fk0
+            tableName: users
